@@ -10,4 +10,4 @@ CREATE TABLE search(
 	email	VARCHAR(100),
 	bio		VARCHAR(250),
 	PRIMARY KEY(email)
-)
+);
