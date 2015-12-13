@@ -1,0 +1,10 @@
+source search_insert_1.sql
+source search_insert_2.sql
+source search_insert_3.sql
+source search_insert_4.sql
+source search_insert_5.sql
+source search_insert_6.sql
+source search_insert_7.sql
+source search_insert_8.sql
+source search_insert_9.sql
+source search_insert_10.sql

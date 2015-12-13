@@ -1,0 +1,13 @@
+DROP DATABASE IF EXISTS search;
+CREATE DATABASE search;
+
+CREATE USER 'search'@'%' IDENTIFIED BY 'search';
+GRANT ALL PRIVILEGES ON search.* TO 'search'@'%';
+FLUSH PRIVILEGES;
+
+DROP TABLE IF EXISTS search;
+CREATE TABLE search(
+	email	VARCHAR(100),
+	bio		VARCHAR(250),
+	PRIMARY KEY(email)
+)
