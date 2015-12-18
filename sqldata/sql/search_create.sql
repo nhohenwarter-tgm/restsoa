@@ -5,6 +5,8 @@ CREATE USER 'search'@'%' IDENTIFIED BY 'search';
 GRANT ALL PRIVILEGES ON search.* TO 'search'@'%';
 FLUSH PRIVILEGES;
 
+USE search;
+
 DROP TABLE IF EXISTS search;
 CREATE TABLE search(
 	email	VARCHAR(100),
