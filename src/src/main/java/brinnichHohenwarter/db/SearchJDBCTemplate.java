@@ -56,6 +56,32 @@ public class SearchJDBCTemplate implements SearchDAO {
     }
 
     /**
+     * Holt Datensaetze aus der Datenbank, die einen bestimmten String enthalten
+     * @param s Suchbegriff
+     * @return Liste an gefundenen Datensaetzen
+     */
+    public List<Search> listPersonsFilterBy(String s) {
+        String SQL = "select * from search where lower(email) like lower('%\"+s+\"%') or lower(bio) like lower('%\"+s+\"%')";
+        List<Search> search = jdbcTemplateObject.query(SQL, new SearchMapper());
+        return search;
+    }
+
+    /**
+     * Gibt max-min Datensaetze aus der nach E-Mail Adressen geordneten Tabelle zurueck, von Reihennummer min ausgehend,
+     * die einen bestimmten String enthalten
+     * @param s Suchbegriff
+     * @param min Reihennummer des ersten Datensatzes
+     * @param max Reihennummer des letzten Datensatzes
+     * @return Liste an gefundenen Datensaetzen
+     */
+    public List<Search> listPersonsFilterBy(String s, int min, int max) {
+        String SQL = "select * from search where lower(email) like lower('%"+s+"%') or lower(bio) like lower('%"+s+"%') order by email limit ?, ?";
+        List<Search> search = jdbcTemplateObject.query(SQL,
+                new Object[]{min, max-min}, new SearchMapper());
+        return search;
+    }
+
+    /**
      * Gibt alle Datensaetze aus der Tabelle zurueck
      * @return Liste aller Datensaetze
      */
@@ -67,15 +93,32 @@ public class SearchJDBCTemplate implements SearchDAO {
     }
 
     /**
+     * Gibt max-min Datensaetze aus der nach E-Mail Adressen geordneten Tabelle zurueck, von Reihennummer min ausgehend
+     * @param min Reihennummer des ersten Datensatzes
+     * @param max Reihennummer des letzten Datensatzes
+     * @return Liste der Datensaetze
+     */
+    public List<Search> listPersons(int min, int max){
+        String SQL = "select * from search order by email limit ?, ?";
+        List <Search> search = jdbcTemplateObject.query(SQL,
+                new Object[]{min, max-min}, new SearchMapper());
+        return search;
+    }
+
+    /**
      * Loescht einen Datensatz anhand der uebergebenen E-Mail
      * Adresse
      * @param email Email
      */
     public boolean delete(String email){
         String SQL = "delete from search where email = ?";
+        int rows = 0;
         try{
-            jdbcTemplateObject.update(SQL, email);
+            rows = jdbcTemplateObject.update(SQL, email);
         }catch(DataAccessException e){
+            return false;
+        }
+        if(rows <= 0){
             return false;
         }
         System.out.println("Deleted Record with Email = " + email);
@@ -89,9 +132,13 @@ public class SearchJDBCTemplate implements SearchDAO {
      */
     public boolean update(String email, String bio){
         String SQL = "update search set bio = ? where email = ?";
+        int rows = 0;
         try {
-            jdbcTemplateObject.update(SQL, bio, email);
+            rows = jdbcTemplateObject.update(SQL, bio, email);
         }catch(DataAccessException e){
+            return false;
+        }
+        if(rows <= 0){
             return false;
         }
         System.out.println("Updated Record with Email = " + email );
