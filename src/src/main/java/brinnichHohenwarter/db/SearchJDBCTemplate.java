@@ -1,8 +1,10 @@
 package brinnichHohenwarter.db;
 
-import java.util.List;
-import javax.sql.DataSource;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * Greift mittels SQL und dem Data Mapper auf die Datenbank zu
@@ -29,11 +31,16 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param email Email
      * @param bio Bio
      */
-    public void create(String email, String bio) {
+    public boolean create(String email, String bio) {
         String SQL = "insert into search (email, bio) values (?, ?)";
+        try {
+            jdbcTemplateObject.update(SQL, email, bio);
+        }catch(DataAccessException e){
+            return false;
+        }
 
-        jdbcTemplateObject.update(SQL, email, bio);
         System.out.println("Created Record Email = " + email + " Bio = " + bio);
+        return true;
     }
 
     /**
@@ -64,10 +71,15 @@ public class SearchJDBCTemplate implements SearchDAO {
      * Adresse
      * @param email Email
      */
-    public void delete(String email){
+    public boolean delete(String email){
         String SQL = "delete from search where email = ?";
-        jdbcTemplateObject.update(SQL, email);
-        System.out.println("Deleted Record with Email = " + email );
+        try{
+            jdbcTemplateObject.update(SQL, email);
+        }catch(DataAccessException e){
+            return false;
+        }
+        System.out.println("Deleted Record with Email = " + email);
+        return true;
     }
 
     /**
@@ -75,10 +87,15 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param email Email
      * @param bio Bio
      */
-    public void update(String email, String bio){
+    public boolean update(String email, String bio){
         String SQL = "update search set bio = ? where email = ?";
-        jdbcTemplateObject.update(SQL, bio, email);
+        try {
+            jdbcTemplateObject.update(SQL, bio, email);
+        }catch(DataAccessException e){
+            return false;
+        }
         System.out.println("Updated Record with Email = " + email );
+        return true;
     }
 
 }

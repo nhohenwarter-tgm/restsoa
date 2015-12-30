@@ -11,4 +11,8 @@ public class SearchViewController {
         return "index";
     }
 
+    @RequestMapping(value = "/add", method= RequestMethod.GET, produces = "text/html")
+    public String add(){
+        return "add";
+    }
 }

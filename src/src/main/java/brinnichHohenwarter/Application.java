@@ -1,6 +1,5 @@
 package brinnichHohenwarter;
 
-import brinnichHohenwarter.db.Search;
 import brinnichHohenwarter.db.SearchJDBCTemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,10 +27,12 @@ public class Application {
         SearchJDBCTemplate searchJDBCTemplate =
                 (SearchJDBCTemplate)context.getBean("studentJDBCTemplate");
 
+        /**
         searchJDBCTemplate.create("info@niklashohenwarter.com", "Tech guy");
         System.out.println("----Listing Record with Email = info@niklashohenwarter.com -----" );
         Search search = searchJDBCTemplate.getPerson("info@niklashohenwarter.com");
         System.out.print("Email : " + search.getEmail() );
         System.out.print(", Bio : " + search.getBio() );
+         */
     }
 }

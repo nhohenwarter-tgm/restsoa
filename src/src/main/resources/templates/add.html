@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>iKnow Systems</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascript.js"></script>
+</head>
+<body>
+    <h2 th:align="center">Add new data</h2>
+    <form>
+        <input th:align="center" th:type="text" th:placeholder="E-Mail" th:id="email"/>
+        <br />
+        <input th:align="center" th:type="text" th:placeholder="Biography" th:id="bio"/>
+        <br />
+        <input th:type="button" th:value="Save" onclick="saveNew($('#email').val(), $('#bio').val());" />
+    </form>
+</body>
+</html>

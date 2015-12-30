@@ -1,7 +1,7 @@
 package brinnichHohenwarter.db;
 
-import java.util.List;
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * Zugriffsmoeglichkeiten auf die Datenbasis
@@ -18,7 +18,7 @@ public interface SearchDAO {
     /**
      * Hiermit koennen neue Datensaetze eingefuegt werden
      */
-    public void create(String email, String bio);
+    public boolean create(String email, String bio);
     /**
      * Abfrage eines einzelnen Datensatzes anhand der Email Adresse
      */
@@ -30,9 +30,9 @@ public interface SearchDAO {
     /**
      * Loechen eines Datensatzes
      */
-    public void delete(String email);
+    public boolean delete(String email);
     /**
      * Zum veraendern eines Datensatzes
      */
-    public void update(String email, String bio);
+    public boolean update(String email, String bio);
 }
