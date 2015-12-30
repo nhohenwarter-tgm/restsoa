@@ -1,4 +1,4 @@
-package brinnichHohenwarter;
+package brinnichHohenwarter.db;
 
 import java.util.List;
 import javax.sql.DataSource;
@@ -8,6 +8,7 @@ import javax.sql.DataSource;
  *
  * @author Niklas Hohenwarter
  * @version 2015-12-30
+ * @see "http://www.tutorialspoint.com/spring/spring_jdbc_example.htm"
  */
 public interface SearchDAO {
     /**
@@ -25,7 +26,7 @@ public interface SearchDAO {
     /**
      * Auflistung aller Datensaetze
      */
-    public List<Search> listStudents();
+    public List<Search> listPersons();
     /**
      * Loechen eines Datensatzes
      */
