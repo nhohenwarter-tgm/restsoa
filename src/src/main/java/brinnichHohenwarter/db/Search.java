@@ -42,4 +42,13 @@ public class Search {
     public void setBio(String bio) {
         this.bio = bio;
     }
+
+    /**
+     * Gibt den Eintrag in leserlichem String-Format zurück
+     * @return einen String, der das Objekt darstellt
+     */
+    @Override
+    public String toString(){
+        return "{EMail: "+this.email+", Biography: "+this.bio+"}";
+    }
 }
