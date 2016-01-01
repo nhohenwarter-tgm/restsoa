@@ -19,12 +19,12 @@ public class SearchController {
         this.searchJDBCTemplate = (SearchJDBCTemplate)context.getBean("studentJDBCTemplate");
     }
 
-    @RequestMapping(value="/api/add", method= RequestMethod.POST)
-    public boolean addGui(@RequestBody Search person){
-        return this.searchJDBCTemplate.create(person.getEmail(), person.getBio());
+    @RequestMapping(value="/api/add", method= RequestMethod.POST, produces = "application/json")
+    public String addGui(@RequestBody Search person){
+        return "{\"success\":"+this.searchJDBCTemplate.create(person.getEmail(), person.getBio())+"}";
     }
 
-    @RequestMapping(value="/api/add/{email}/{bio}", method= RequestMethod.GET)
+    @RequestMapping(value="/api/add/'{email}'/'{bio}'", method= RequestMethod.GET)
     public String add(@PathVariable String email, @PathVariable String bio){
         boolean res = this.searchJDBCTemplate.create(email, bio);
         if(res){
@@ -34,12 +34,12 @@ public class SearchController {
         }
     }
 
-    @RequestMapping(value="/api/edit", method=RequestMethod.PUT)
-    public boolean editGui(@RequestBody Search person){
-        return this.searchJDBCTemplate.update(person.getEmail(), person.getBio());
+    @RequestMapping(value="/api/edit", method=RequestMethod.PUT, produces = "application/json")
+    public String editGui(@RequestBody Search person){
+        return "{\"success\":"+this.searchJDBCTemplate.update(person.getEmail(), person.getBio())+"}";
     }
 
-    @RequestMapping(value="/api/edit/{email}/{bio}", method= RequestMethod.GET)
+    @RequestMapping(value="/api/edit/'{email}'/'{bio}'", method= RequestMethod.GET)
     public String edit(@PathVariable String email, @PathVariable String bio){
         boolean res = this.searchJDBCTemplate.update(email, bio);
         if(res){
@@ -49,12 +49,12 @@ public class SearchController {
         }
     }
 
-    @RequestMapping(value="/api/delete/{email}", method=RequestMethod.DELETE)
-    public boolean deleteGui(@PathVariable String email) {
-        return this.searchJDBCTemplate.delete(email);
+    @RequestMapping(value="/api/delete/'{email}'", method=RequestMethod.DELETE, produces = "application/json")
+    public String deleteGui(@PathVariable String email) {
+        return "{\"success\":"+this.searchJDBCTemplate.delete(email)+"}";
     }
 
-    @RequestMapping(value="/api/delete/{email}", method= RequestMethod.GET)
+    @RequestMapping(value="/api/delete/'{email}'", method= RequestMethod.GET)
     public String delete(@PathVariable String email){
         boolean res = this.searchJDBCTemplate.delete(email);
         if(res){
