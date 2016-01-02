@@ -14,13 +14,18 @@
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-2">
-        <input th:type="text" th:placeholder="Search" th:id="search"/>
-        <button onclick="search($('#search').val());" >
-            <span class="glyphicon glyphicon-search"></span>
-        </button>
+        <div class="input-group">
+            <input th:type="text" th:placeholder="Search..." th:id="search" class="form-control"
+                   th:onkeypress="'if (event.keyCode == 13) { search($(\'#search\').val()); return false; }'"/>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="search($('#search').val());" >
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
     </div>
     <a href="/add" class="col-md-2" style="align: center; font-size: 20px; text-decoration: none; color: blue;">
-        <span class="glyphicon glyphicon-plus-sign"></span>Add new person
+        <span class="glyphicon glyphicon-plus-sign"></span> Add new person
     </a>
     <div class="col-md-4"></div>
 </div>

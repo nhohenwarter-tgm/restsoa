@@ -31,7 +31,8 @@
             <!--
             <button class="btn btn-success col-md-3" style="margin-right: 10px;"
                     onclick="console.log('asd');">Cancel</button>-->
-            <a href="/page=1"><button class="btn btn-danger col-md-3" style="margin-left: 10px; display: block">Cancel</button></a>
+            <a href="/page=1"><button class="btn btn-danger col-md-3" style="margin-left: 10px; display: block"
+                        th:onclick="'return toMainPage();'">Cancel</button></a>
             <button class="btn btn-success col-md-3" style="margin-left: 10px;"
                     onclick="return saveChanges($('#email').val(), $('#bio').val());">Save Changes</button>
             <div class="col-md-3"></div>

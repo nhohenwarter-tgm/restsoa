@@ -19,6 +19,11 @@ window.onload = function(){
     }
 };
 
+function toMainPage() {
+    window.location.href = "/";
+    return false;
+}
+
 function saveNew(email, bio){
     $.ajax({
         url: "/api/add",
