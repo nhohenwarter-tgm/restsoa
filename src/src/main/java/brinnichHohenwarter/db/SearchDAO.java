@@ -24,9 +24,21 @@ public interface SearchDAO {
      */
     public Search getPerson(String email);
     /**
+     * Auflistung aller Datensaetze, die einem Muster enstprechen
+     */
+    public List<Search> listPersonsFilterBy(String s);
+    /**
+     * Auflistung aller Datensaetze, die einem Muster enstprechen (Seitenweise)
+     */
+    public List<Search> listPersonsFilterBy(String s, int min, int max);
+    /**
      * Auflistung aller Datensaetze
      */
     public List<Search> listPersons();
+    /**
+     * Auflistung aller Datensaetze (Seitenweise)
+     */
+    public List<Search> listPersons(int min, int max);
     /**
      * Loechen eines Datensatzes
      */

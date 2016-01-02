@@ -55,7 +55,6 @@ public class SearchViewController {
 
     @RequestMapping(value = "/edit/'{email}'", method= RequestMethod.GET, produces = "text/html")
     public String edit(@PathVariable String email, Model model){
-        System.out.println(email);
         Search person = this.searchJDBCTemplate.getPerson(email);
         model.addAttribute("person", person);
         return "edit";

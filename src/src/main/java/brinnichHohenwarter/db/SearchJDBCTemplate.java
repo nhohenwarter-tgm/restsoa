@@ -21,6 +21,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * Setzt die Datasource
      * @param dataSource DataSource
      */
+    @Override
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
@@ -31,6 +32,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param email Email
      * @param bio Bio
      */
+    @Override
     public boolean create(String email, String bio) {
         String SQL = "insert into search (email, bio) values (?, ?)";
         try {
@@ -48,6 +50,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param email Email
      * @return Search
      */
+    @Override
     public Search getPerson(String email) {
         String SQL = "select * from search where email = ?";
         Search search = jdbcTemplateObject.queryForObject(SQL,
@@ -60,6 +63,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param s Suchbegriff
      * @return Liste an gefundenen Datensaetzen
      */
+    @Override
     public List<Search> listPersonsFilterBy(String s) {
         String SQL = "select * from search where lower(email) like lower('%"+s+"%') or lower(bio) like lower('%"+s+"%')";
         List<Search> search = jdbcTemplateObject.query(SQL, new SearchMapper());
@@ -74,6 +78,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param max Reihennummer des letzten Datensatzes
      * @return Liste an gefundenen Datensaetzen
      */
+    @Override
     public List<Search> listPersonsFilterBy(String s, int min, int max) {
         String SQL = "select * from search where lower(email) like lower('%"+s+"%') or lower(bio) like lower('%"+s+"%') order by email limit ?, ?";
         List<Search> search = jdbcTemplateObject.query(SQL,
@@ -85,6 +90,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * Gibt alle Datensaetze aus der Tabelle zurueck
      * @return Liste aller Datensaetze
      */
+    @Override
     public List<Search> listPersons() {
         String SQL = "select * from search";
         List <Search> search = jdbcTemplateObject.query(SQL,
@@ -98,6 +104,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param max Reihennummer des letzten Datensatzes
      * @return Liste der Datensaetze
      */
+    @Override
     public List<Search> listPersons(int min, int max){
         String SQL = "select * from search order by email limit ?, ?";
         List <Search> search = jdbcTemplateObject.query(SQL,
@@ -110,6 +117,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * Adresse
      * @param email Email
      */
+    @Override
     public boolean delete(String email){
         String SQL = "delete from search where email = ?";
         int rows = 0;
@@ -130,6 +138,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @param email Email
      * @param bio Bio
      */
+    @Override
     public boolean update(String email, String bio){
         String SQL = "update search set bio = ? where email = ?";
         int rows = 0;
