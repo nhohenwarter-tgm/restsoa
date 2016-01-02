@@ -12,6 +12,13 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+/**
+ * Konfiguration fuer den SOA Webservice
+ *
+ * @author Niklas Hohenwarter
+ * @version 2016-01-02
+ * @see "http://spring.io/guides/gs/producing-web-service/"
+ */
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {

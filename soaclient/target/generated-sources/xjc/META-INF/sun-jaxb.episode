@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.11 generiert 
+Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+Generiert: 2016.01.02 um 03:49:19 PM CET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://localhost/soa/search">
+    <schemaBindings map="false">
+      <package name="search.wsdl"/>
+    </schemaBindings>
+    <bindings scd="tns:getPersonsRequest">
+      <class ref="search.wsdl.GetPersonsRequest"/>
+    </bindings>
+    <bindings scd="tns:getPersonResponse">
+      <class ref="search.wsdl.GetPersonResponse"/>
+    </bindings>
+    <bindings scd="~tns:search">
+      <class ref="search.wsdl.Search"/>
+    </bindings>
+  </bindings>
+</bindings>
+

@@ -18,15 +18,5 @@ public class Application {
      */
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-
-
-        /**
-        // Database Test
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
-        SearchJDBCTemplate searchJDBCTemplate =
-                (SearchJDBCTemplate)context.getBean("studentJDBCTemplate");
-         */
     }
 }
