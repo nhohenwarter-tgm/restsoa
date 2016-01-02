@@ -9,73 +9,86 @@
     <script type="text/javascript" src="/javascript.js"></script>
 </head>
 <body>
-<h1 style="text-align: center;">iKnow Systems Knowledge Database</h1>
-<div style="padding-top: 20px;"></div>
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-2">
-        <div class="input-group">
-            <input th:type="text" th:placeholder="Search..." th:id="search" class="form-control"
-                   th:onkeypress="'if (event.keyCode == 13) { search($(\'#search\').val()); return false; }'"/>
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="search($('#search').val());" >
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
-        </div>
-    </div>
-    <a href="/add" class="col-md-2" style="align: center; font-size: 20px; text-decoration: none; color: blue;">
-        <span class="glyphicon glyphicon-plus-sign"></span> Add new person
-    </a>
-    <div class="col-md-4"></div>
-</div>
-<div style="padding-top: 20px;"></div>
-<div class="row">
-    <div class="col-md-5"></div>
-    <button class="col-md-1 btn" onclick="paginationPrev();" style="margin: 0px 10px;">
-        <span class="glyphicon glyphicon-chevron-left"></span>Previous
-    </button>
-    <button class="col-md-1 btn" onclick="paginationNext();" style="margin: 0px 10px;">
-        Next<span class="glyphicon glyphicon-chevron-right"></span>
-    </button>
-    <div class="col-md-5"></div>
-</div>
-<div style="padding-top: 20px;"></div>
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <div class="alert alert-success" id="alert_success" style="display: none">Success!</div>
-        <div class="alert alert-danger" id="alert_error" style="display: none">An error occured!</div>
-    </div>
-    <div class="col-md-4"></div>
-</div>
-<div style="padding-top: 20px;"></div>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-        <div class="row">
-            <div th:each="person : ${persons}">
-                <div class="col-md-4">
-                    <div class="panel panel-default" style="min-height: 150px; max-height: 150px;
-                    text-overflow: ellipsis; overflow: hidden;">
-                        <div class="panel-heading row">
-                            <h3 class="panel-title col-md-10">
-                                <span class="glyphicon glyphicon-user"></span> <span th:text="${person.email}"></span>
-                            </h3>
-                            <h3 class="panel-title col-md-2" style="text-align: right;">
-                                <a class="glyphicon glyphicon-pencil" th:onclick="'showEditPage(\''+${person.email}+'\');'"
-                                   style="text-decoration: none; color: black; cursor: pointer;"></a>
-                                <a class="glyphicon glyphicon-trash" th:onclick="'deletePerson(\''+${person.email}+'\');'"
-                                   style="text-decoration: none; color: black; cursor: pointer;"></a>
-                            </h3>
-                        </div>
-                        <div class="panel-body" th:text="${person.bio}"></div>
-                    </div>
-                </div>
+    <h1 style="text-align: center;">iKnow Systems Knowledge Database</h1>
+    <div style="padding-top: 20px;"></div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <!-- SEARCH BAR -->
+        <div class="col-md-2">
+            <div class="input-group">
+                <input th:type="text" th:placeholder="Search..." th:id="search" class="form-control"
+                    th:onkeypress="'if (event.keyCode == 13) { search($(\'#search\').val()); return false; }'"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="search($('#search').val());" >
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
             </div>
         </div>
+        <!-- END SEARCH BAR -->
+        <!-- ADD NEW BUTTON -->
+        <a href="/add" class="col-md-2" style="align: center; font-size: 20px; text-decoration: none; color: blue;">
+            <span class="glyphicon glyphicon-plus-sign"></span> Add new person
+        </a>
+        <!-- END ADD NEW BUTTON -->
+        <div class="col-md-4"></div>
     </div>
-    <div class="col-md-1"></div>
-</div>
+    <div style="padding-top: 20px;"></div>
+    <!-- PAGINATION -->
+    <div class="row">
+        <div class="col-md-5"></div>
+        <button class="col-md-1 btn" onclick="paginationPrev();" style="margin: 0px 10px;">
+            <span class="glyphicon glyphicon-chevron-left"></span>Previous
+        </button>
+        <button class="col-md-1 btn" onclick="paginationNext();" style="margin: 0px 10px;">
+            Next<span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+        <div class="col-md-5"></div>
+    </div>
+    <!-- END PAGINATION -->
+    <div style="padding-top: 20px;"></div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <!-- ERROR & SUCCESS ALERT -->
+        <div class="col-md-4">
+            <div class="alert alert-success" id="alert_success" style="display: none">Success!</div>
+            <div class="alert alert-danger" id="alert_error" style="display: none">An error occured!</div>
+        </div>
+        <!-- END ERROR & SUCCESS ALERT -->
+        <div class="col-md-4"></div>
+    </div>
+    <div style="padding-top: 20px;"></div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row">
+                <!-- LOOP THROUGH PERSONS -->
+                <div th:each="person : ${persons}">
+                    <div class="col-md-4">
+                        <div class="panel panel-default" style="min-height: 150px; max-height: 150px;
+                                text-overflow: ellipsis; overflow: hidden;">
+                            <div class="panel-heading row">
+                                <!-- EMAIL -->
+                                <h3 class="panel-title col-md-10">
+                                    <span class="glyphicon glyphicon-user"></span> <span th:text="${person.email}"></span>
+                                </h3>
+                                <!-- EDIT & DELETE ICONS -->
+                                <h3 class="panel-title col-md-2" style="text-align: right;">
+                                    <a class="glyphicon glyphicon-pencil" th:onclick="'showEditPage(\''+${person.email}+'\');'"
+                                        style="text-decoration: none; color: black; cursor: pointer;"></a>
+                                    <a class="glyphicon glyphicon-trash" th:onclick="'deletePerson(\''+${person.email}+'\');'"
+                                        style="text-decoration: none; color: black; cursor: pointer;"></a>
+                                </h3>
+                            </div>
+                            <!-- BIO -->
+                            <div class="panel-body" th:text="${person.bio}"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END LOOP THROUGH PERSONS -->
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
 </body>
 </html>

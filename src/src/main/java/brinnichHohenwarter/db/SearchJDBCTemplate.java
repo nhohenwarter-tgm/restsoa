@@ -10,7 +10,8 @@ import java.util.List;
  * Greift mittels SQL und dem Data Mapper auf die Datenbank zu
  *
  * @author Niklas Hohenwarter
- * @version 2015-12-30
+ * @author Selina Brinnich
+ * @version 2016-01-02
  * @see "http://www.tutorialspoint.com/spring/spring_jdbc_example.htm"
  */
 public class SearchJDBCTemplate implements SearchDAO {

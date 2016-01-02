@@ -9,36 +9,41 @@
     <script type="text/javascript" src="/javascript.js"></script>
 </head>
 <body>
-<h1 style="text-align: center;">iKnow Systems Knowledge Database</h1>
-<h2 th:align="center">Edit person</h2>
-<div style="padding-top: 20px;"></div>
-<form id="add_form" class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <div class="form-group">
-            <label>E-Mail Address</label><br />
-            <span th:text="${person.email}"></span>
-            <input type="text" th:value="${person.email}" hidden="true" id="email"/>
-        </div>
-        <br />
-        <div class="form-group">
-            <label for="bio">Biography</label>
-            <textarea class="form-control" rows="5" id="bio" style="resize: vertical" th:text="${person.bio}"></textarea>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-3"></div>
-            <!--
-            <button class="btn btn-success col-md-3" style="margin-right: 10px;"
-                    onclick="console.log('asd');">Cancel</button>-->
-            <a href="/page=1"><button class="btn btn-danger col-md-3" style="margin-left: 10px; display: block"
-                        th:onclick="'return toMainPage();'">Cancel</button></a>
-            <button class="btn btn-success col-md-3" style="margin-left: 10px;"
+    <h1 style="text-align: center;">iKnow Systems Knowledge Database</h1>
+    <h2 th:align="center">Edit person</h2>
+    <div style="padding-top: 20px;"></div>
+    <form id="add_form" class="row">
+        <div class="col-md-4"></div>
+        <!-- FORM FIELDS -->
+        <div class="col-md-4">
+            <!-- EMAIL FIELD -->
+            <div class="form-group">
+                <label>E-Mail Address</label><br />
+                <span th:text="${person.email}"></span>
+                <input type="text" th:value="${person.email}" hidden="true" id="email"/>
+            </div>
+            <!-- END EMAIL FIELD -->
+            <br />
+            <!-- BIO FIELD -->
+            <div class="form-group">
+                <label for="bio">Biography</label>
+                <textarea class="form-control" rows="5" id="bio" style="resize: vertical" th:text="${person.bio}"></textarea>
+            </div>
+            <!-- END BIO FIELD -->
+            <br />
+            <!-- SUBMIT & CANCEL BUTTON -->
+            <div class="row">
+                <div class="col-md-3"></div>
+                <a href="/page=1"><button class="btn btn-danger col-md-3" style="margin-left: 10px; display: block"
+                                      th:onclick="'return toMainPage();'">Cancel</button></a>
+                <button class="btn btn-success col-md-3" style="margin-left: 10px;"
                     onclick="return saveChanges($('#email').val(), $('#bio').val());">Save Changes</button>
-            <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+            </div>
+            <!-- END SUBMIT & CANCEL BUTTON -->
         </div>
-    </div>
-    <div class="col-md-4"></div>
-</form>
+        <!-- END FORM FIELDS -->
+        <div class="col-md-4"></div>
+    </form>
 </body>
 </html>
