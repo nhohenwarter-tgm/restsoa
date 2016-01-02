@@ -20,19 +20,13 @@ public class Application {
         SpringApplication.run(Application.class, args);
 
 
+        /**
         // Database Test
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("beans.xml");
 
         SearchJDBCTemplate searchJDBCTemplate =
                 (SearchJDBCTemplate)context.getBean("studentJDBCTemplate");
-
-        /**
-        searchJDBCTemplate.create("info@niklashohenwarter.com", "Tech guy");
-        System.out.println("----Listing Record with Email = info@niklashohenwarter.com -----" );
-        Search search = searchJDBCTemplate.getPerson("info@niklashohenwarter.com");
-        System.out.print("Email : " + search.getEmail() );
-        System.out.print(", Bio : " + search.getBio() );
          */
     }
 }

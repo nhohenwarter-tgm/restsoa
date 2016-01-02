@@ -61,7 +61,7 @@ public class SearchJDBCTemplate implements SearchDAO {
      * @return Liste an gefundenen Datensaetzen
      */
     public List<Search> listPersonsFilterBy(String s) {
-        String SQL = "select * from search where lower(email) like lower('%\"+s+\"%') or lower(bio) like lower('%\"+s+\"%')";
+        String SQL = "select * from search where lower(email) like lower('%"+s+"%') or lower(bio) like lower('%"+s+"%')";
         List<Search> search = jdbcTemplateObject.query(SQL, new SearchMapper());
         return search;
     }

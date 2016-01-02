@@ -4,7 +4,7 @@
     <xs:element name="getPersonsRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="name" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -12,7 +12,7 @@
     <xs:element name="getPersonResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="search" type="tns:search"/>
+                <xs:element name="search" type="tns:search" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

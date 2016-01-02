@@ -1,4 +1,4 @@
-package brinnichHohenwarter;
+package brinnichHohenwarter.rest;
 
 
 import brinnichHohenwarter.db.Search;
